@@ -24,7 +24,7 @@ TODO: Fill me in
 
 ## Where are the Javascript and CSS assets?
 
-We've chosen not to bundle those assets with the gem as they might be updated more
+I've chosen not to bundle those assets with the gem as they might be updated more
 frequently then this library. Roda is also asset-agnostic (for the most part),
 so it's easier if you bring in your assets as you see fit for your specific needs.
 
