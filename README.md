@@ -1,6 +1,6 @@
 # Unpoly for Roda
 
-Easily add support for the server protocol expected by Unpoly.
+Easily add support for the server protocol expected by [Unpoly](http://unpoly.com).
 
 ## Installation
 
