@@ -20,7 +20,41 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Fill me in
+In order for roda-unpoly to satisfy the server protocol expected by Unpoly, the
+`r.unpoly` method will need to be called once during your routing tree. Preferably
+near the top.
+
+```ruby
+class App < Roda
+  plugin :unpoly
+
+  route do |r|
+    r.unpoly
+
+    # Rest of routing tree
+  end
+end
+```
+
+Inside the routing tree, some convenience methods are made available to work with
+the Unpoly request.
+
+### Testing for Unpoly request
+
+Use the methods `r.up?`, `r.unpoly?`, `r.up.up?`, or `r.up.unpoly?` (they are
+all aliases of the same method).
+
+### Testing the Unpoly target
+
+Use the method `r.up.target?(your_target)`.
+
+### Testing for Unpoly validate request
+
+Use the method `r.up.validate?`.
+
+### Setting page title
+
+Use the method `r.up.title=`.
 
 ## Where are the Javascript and CSS assets?
 
