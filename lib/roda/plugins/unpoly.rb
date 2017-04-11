@@ -72,9 +72,9 @@ class Roda
           response.headers["X-Up-Method"] = request_method
 
           if !get? && !unpoly?
-            Rack::Utils.set_cookie_header!(response.headers, "_up_method", request_method)
+            Rack::Utils.set_cookie_header!(response.headers, "_up_method", { value: request_method, path: "/" })
           else
-            Rack::Utils.delete_cookie_header!(response.headers, "_up_method")
+            Rack::Utils.delete_cookie_header!(response.headers, "_up_method", { path: "/" })
           end
         end
 
