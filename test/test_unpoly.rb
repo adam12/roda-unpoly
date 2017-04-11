@@ -59,7 +59,7 @@ class TestUnpoly < Minitest::Test
   def test_unpoly_sets_cookie_on_non_get_requests
     post "/"
 
-    assert_equal "_up_method=POST", last_response.headers["Set-Cookie"]
+    assert_equal "_up_method=POST; path=/", last_response.headers["Set-Cookie"]
   end
 
   def test_unpoly_deletes_cookie_on_get_requests
