@@ -20,7 +20,7 @@ class Roda
 
         # Determine if this is an Unpoly request.
         def unpoly?
-          get_header("X-Up-Target").to_s.strip != ""
+          target.to_s.strip != ""
         end
         alias up? unpoly?
 
@@ -45,7 +45,7 @@ class Roda
 
         # The actual target as requested by Unpoly.
         def target
-          get_header("X-Up-Target")
+          get_header("HTTP_X_UP_TARGET")
         end
 
         # Set the page title.
@@ -55,7 +55,7 @@ class Roda
 
         # Determine if this is a validate request.
         def validate?
-          get_header("X-Up-Validate").to_s.strip != ""
+          get_header("HTTP_X_UP_VALIDATE").to_s.strip != ""
         end
       end
 

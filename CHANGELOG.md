@@ -1,4 +1,5 @@
 ## master
+- Fix header names
 
 ## 0.2.1 (2017-04-11)
 - Specify path for cookies

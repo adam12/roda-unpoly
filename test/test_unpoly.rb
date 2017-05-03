@@ -75,23 +75,23 @@ class TestUnpoly < Minitest::Test
   end
 
   def test_validate?
-    get "/validate", {}, "X-Up-Validate" => true
+    get "/validate", {}, "HTTP_X_UP_VALIDATE" => true
 
     assert_equal "Validate", last_response.body
   end
 
   def test_targeteh_with_html_always_true
-    get "/target/foo", {}, { "X-Up-Target" => "html" }
+    get "/target/foo", {}, { "HTTP_X_UP_TARGET" => "html" }
 
     assert_equal "Yep", last_response.body
   end
 
   def test_targeteh_with_body_mostly_true
-    get "/target/div", {}, { "X-Up-Target" => "body" }
+    get "/target/div", {}, { "HTTP_X_UP_TARGET" => "body" }
 
     assert_equal "Yep", last_response.body
 
-    get "/target/head", {}, { "X-Up-Target" => "body" }
+    get "/target/head", {}, { "HTTP_X_UP_TARGET" => "body" }
     assert_equal "Nope", last_response.body
   end
 
