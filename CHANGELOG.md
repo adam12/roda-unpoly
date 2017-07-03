@@ -1,5 +1,6 @@
 ## master
 
+## 0.2.3 (2017-07-03)
 - Return full URL in header
 
 ## 0.2.2 (2017-05-02)
