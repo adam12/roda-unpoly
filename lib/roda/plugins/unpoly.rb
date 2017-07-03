@@ -68,7 +68,7 @@ class Roda
         # to satisfy the contract of the Unpoly library. Called early in your
         # routing tree.
         def unpoly
-          response.headers["X-Up-Location"] = path
+          response.headers["X-Up-Location"] = url
           response.headers["X-Up-Method"] = request_method
 
           if !get? && !unpoly?

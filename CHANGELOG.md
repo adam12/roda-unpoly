@@ -1,5 +1,7 @@
 ## master
 
+- Return full URL in header
+
 ## 0.2.2 (2017-05-02)
 - Fix header names
 
