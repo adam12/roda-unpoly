@@ -1,5 +1,7 @@
 ## master
 
+- Relax Roda version for upcoming Roda 3 release
+
 ## 0.2.3 (2017-07-03)
 - Return full URL in header
 
