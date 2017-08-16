@@ -1,6 +1,6 @@
 Gem::Specification.new do |spec|
   spec.name = "roda-unpoly"
-  spec.version = "0.2.3"
+  spec.version = "0.2.4"
   spec.authors = ["Adam Daniels"]
   spec.email = "adam@mediadrive.ca"
 

@@ -1,5 +1,6 @@
 ## master
 
+## 0.2.4 (2017-08-16)
 - Relax Roda version for upcoming Roda 3 release
 
 ## 0.2.3 (2017-07-03)
