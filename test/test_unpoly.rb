@@ -75,7 +75,7 @@ class TestUnpoly < Minitest::Test
   end
 
   def test_validate?
-    get "/validate", {}, "HTTP_X_UP_VALIDATE" => true
+    get "/validate", {}, "HTTP_X_UP_VALIDATE" => "the-name"
 
     assert_equal "Validate", last_response.body
   end

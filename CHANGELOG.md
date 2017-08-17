@@ -1,4 +1,5 @@
 ## master
+- Add `validate_name` method to return name of form field which triggered validation
 
 ## 0.2.4 (2017-08-16)
 - Relax Roda version for upcoming Roda 3 release

@@ -55,7 +55,13 @@ class Roda
 
         # Determine if this is a validate request.
         def validate?
-          get_header("HTTP_X_UP_VALIDATE").to_s.strip != ""
+          validate_name.to_s.strip != ""
+        end
+
+        # The name attribute of the form field that triggered
+        # the validation.
+        def validate_name
+          get_header("HTTP_X_UP_VALIDATE")
         end
       end
 
