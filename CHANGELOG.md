@@ -1,4 +1,6 @@
 ## master
+
+## 0.3.0 (2017-10-02)
 - Add `validate_name` method to return name of form field which triggered validation
 
 ## 0.2.4 (2017-08-16)
