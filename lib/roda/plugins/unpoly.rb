@@ -35,11 +35,13 @@ class Roda
         end
 
         # The CSS selector for the fragment Unpoly will update if the request fails.
+        # Requires Unpoly >= 0.50
         def fail_target
           get_header("HTTP_X_UP_FAIL_TARGET")
         end
 
         # Determine if the provided target is the current target for a failed request.
+        # Requires Unpoly >= 0.50
         def fail_target?(tested_target)
           query_target(fail_target, tested_target)
         end
