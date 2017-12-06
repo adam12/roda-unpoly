@@ -26,26 +26,24 @@ class Roda
 
         # Identify if the +tested_target+ will match the actual target requested.
         def target?(tested_target)
-          if up?
-            actual_target = target
-
-            if actual_target == tested_target
-              true
-            elsif actual_target == "html"
-              true
-            elsif actual_target == "body"
-              !%w(head title meta).include?(tested_target)
-            else
-              false
-            end
-          else
-            true
-          end
+          query_target(target, tested_target)
         end
 
         # The actual target as requested by Unpoly.
         def target
           get_header("HTTP_X_UP_TARGET")
+        end
+
+        def fail_target
+          get_header("HTTP_X_UP_FAIL_TARGET")
+        end
+
+        def fail_target?(tested_target)
+          query_target(fail_target, tested_target)
+        end
+
+        def any_target?(tested_target)
+          target?(tested_target) || fail_target?(tested_target)
         end
 
         # Set the page title.
@@ -62,6 +60,22 @@ class Roda
         # the validation.
         def validate_name
           get_header("HTTP_X_UP_VALIDATE")
+        end
+
+        def query_target(actual_target, tested_target)
+          if up?
+            if actual_target == tested_target
+              true
+            elsif actual_target == "html"
+              true
+            elsif actual_target == "body"
+              !%w(head title meta).include?(tested_target)
+            else
+              false
+            end
+          else
+            true
+          end
         end
       end
 
