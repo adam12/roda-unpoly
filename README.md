@@ -20,18 +20,14 @@ Or install it yourself as:
 
 ## Usage
 
-In order for roda-unpoly to satisfy the server protocol expected by Unpoly, the
-`r.unpoly` method will need to be called once during your routing tree. Preferably
-near the top.
+Simply enable the plugin through the `plugin` mechanism.
 
 ```ruby
 class App < Roda
   plugin :unpoly
 
   route do |r|
-    r.unpoly
-
-    # Rest of routing tree
+    # Routing tree
   end
 end
 ```
