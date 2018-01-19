@@ -7,12 +7,22 @@ class Roda
     # The unpoly plugin provides the necessary sugar to make Unpoly work seamlessly
     # with Roda.
     #
+    # = Example
+    #
     #   plugin :unpoly
+    #
+    #   route do |r|
+    #     if r.up?
+    #       "Unpoly request! :)"
+    #     else
+    #       "Not an Unpoly request :("
+    #     end
+    #   end
     module Unpoly
       class RodaInspector < DelegateClass(Rack::Unpoly::Inspector)
         attr_accessor :response # :nodoc:
 
-        def initialize(obj, response)
+        def initialize(obj, response) # :nodoc:
           super(obj)
           @response = response
         end
@@ -34,7 +44,7 @@ class Roda
         end
       end
 
-      def self.configure(app, _opts={})
+      def self.configure(app, _opts={}) # :nodoc:
         app.use Rack::Unpoly::Middleware
       end
     end
