@@ -10,41 +10,6 @@ class TestUnpoly < Minitest::Test
       plugin :unpoly
 
       route do |r|
-        r.unpoly
-
-        r.get "fail_target", :target do |target|
-          r.up.fail_target?(target) ? "Yep" : "Nope"
-        end
-
-        r.get "any_target", :target do |target|
-          r.up.any_target?(target) ? "Yep" : "Nope"
-        end
-
-        r.get "target", :target do |target|
-          if r.up.target?(target)
-            "Yep"
-          else
-            "Nope"
-          end
-        end
-
-        r.get "validate" do
-          if r.up.validate?
-            "Validate"
-          else
-            "Nope"
-          end
-        end
-
-        r.get "set-title" do
-          r.up.title = "New Title"
-          "Success"
-        end
-
-        r.post true do
-          "Post"
-        end
-
         r.get true do
           "Get"
         end
@@ -52,74 +17,9 @@ class TestUnpoly < Minitest::Test
     end
   end
 
-  def test_unpoly_sets_method
+  def test_plugin_adds_middleware
     get "/"
 
     refute_nil last_response.headers["X-Up-Method"]
-  end
-
-  def test_unpoly_sets_location
-    get "/"
-
-    refute_nil last_response.headers["X-Up-Location"]
-  end
-
-  def test_unpoly_sets_cookie_on_non_get_requests
-    post "/"
-
-    assert_equal "_up_method=POST; path=/", last_response.headers["Set-Cookie"]
-  end
-
-  def test_unpoly_deletes_cookie_on_get_requests
-    get "/"
-
-    assert_match %r{_up_method=;}, last_response.headers["Set-Cookie"]
-  end
-
-  def test_set_title
-    get "/set-title"
-
-    refute_nil last_response.headers["X-Up-Title"]
-  end
-
-  def test_validate?
-    get "/validate", {}, "HTTP_X_UP_VALIDATE" => "the-name"
-
-    assert_equal "Validate", last_response.body
-  end
-
-  def test_targeteh_with_html_always_true
-    get "/target/foo", {}, { "HTTP_X_UP_TARGET" => "html" }
-
-    assert_equal "Yep", last_response.body
-  end
-
-  def test_targeteh_with_body_mostly_true
-    get "/target/div", {}, { "HTTP_X_UP_TARGET" => "body" }
-
-    assert_equal "Yep", last_response.body
-
-    get "/target/head", {}, { "HTTP_X_UP_TARGET" => "body" }
-    assert_equal "Nope", last_response.body
-  end
-
-  def test_targeteh_not_unpoly_request
-    get "/target/dontmatter"
-
-    assert_equal "Yep", last_response.body
-  end
-
-  def test_fail_target
-    get "/fail_target/foo", {}, { "HTTP_X_UP_FAIL_TARGET" => "foo" }
-
-    assert_equal "Yep", last_response.body
-  end
-
-  def test_any_target
-    get "/any_target/foo", {}, { "HTTP_X_UP_TARGET" => "foo" }
-    assert_equal "Yep", last_response.body
-
-    get "/any_target/foo", {}, { "HTTP_X_UP_TARGET" => "baz" }
-    assert_equal "Nope", last_response.body
   end
 end
