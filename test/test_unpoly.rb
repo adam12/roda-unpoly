@@ -12,6 +12,14 @@ class TestUnpoly < Minitest::Test
       route do |r|
         r.unpoly
 
+        r.get "fail_target", :target do |target|
+          r.up.fail_target?(target) ? "Yep" : "Nope"
+        end
+
+        r.get "any_target", :target do |target|
+          r.up.any_target?(target) ? "Yep" : "Nope"
+        end
+
         r.get "target", :target do |target|
           if r.up.target?(target)
             "Yep"
@@ -99,5 +107,19 @@ class TestUnpoly < Minitest::Test
     get "/target/dontmatter"
 
     assert_equal "Yep", last_response.body
+  end
+
+  def test_fail_target
+    get "/fail_target/foo", {}, { "HTTP_X_UP_FAIL_TARGET" => "foo" }
+
+    assert_equal "Yep", last_response.body
+  end
+
+  def test_any_target
+    get "/any_target/foo", {}, { "HTTP_X_UP_TARGET" => "foo" }
+    assert_equal "Yep", last_response.body
+
+    get "/any_target/foo", {}, { "HTTP_X_UP_TARGET" => "baz" }
+    assert_equal "Nope", last_response.body
   end
 end
