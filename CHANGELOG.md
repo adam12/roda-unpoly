@@ -1,5 +1,6 @@
 ## master
-
+- Switch to rack-unpoly for all low-level Unpoly calls
+- Deprecate `r.unpoly` requirement in routing tree
 - Add `fail_target` method to return CSS selector for failed request bodies
 - Add `fail_target?` method to test whether CSS selector provided is the current fail target
 - Add `any_target?` method to test whether CSS selector is current success or fail target
