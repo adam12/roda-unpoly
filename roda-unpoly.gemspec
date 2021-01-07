@@ -9,7 +9,6 @@ Gem::Specification.new do |spec|
   spec.license = "MIT"
 
   spec.files = ["README.md", "Rakefile"] + Dir["lib/**/*.rb"]
-  spec.require_paths = ["lib"]
 
   spec.add_dependency "rack-unpoly"
   spec.add_dependency "roda", ">= 2.0", "< 4.0"
