@@ -1,4 +1,5 @@
 # frozen-string-literal: true
+
 require "forwardable"
 require "rack/unpoly/middleware"
 
@@ -19,32 +20,47 @@ class Roda
     #     end
     #   end
     module Unpoly
+      # @see Rack::Unpoly::Inspector
       class RodaInspector < DelegateClass(Rack::Unpoly::Inspector)
-        attr_accessor :response # :nodoc:
-
-        def initialize(obj, response) # :nodoc:
+        # @api private
+        def initialize(obj, response)
           super(obj)
           @response = response
         end
 
         # Set the page title.
+        #
+        # @example
+        #   r.up.title = "The new page title"
+        #
+        # @param value [String]
         def title=(value)
           set_title(response, value)
         end
+
+        private
+
+        attr_reader :response
       end
 
       module RequestMethods
         extend Forwardable
 
-        def_delegators :up, :unpoly?, :up?
+        # @!method unpoly?
+        #   is an Unpoly request
+        #   @return [Boolean]
+        def_delegators :up, :unpoly?
+        alias_method :unpoly?, :up?
 
         # An instance of the +Inspector+.
+        # @return [RodaInspector]
         def up
           RodaInspector.new(env["rack.unpoly"], response)
         end
       end
 
-      def self.configure(app, _opts={}) # :nodoc:
+      # @api private
+      def self.configure(app, _opts={})
         app.use Rack::Unpoly::Middleware
       end
     end
