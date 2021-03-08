@@ -1,3 +1,5 @@
+# frozen-string-literal: true
+
 require "minitest/autorun"
 require "rack/test"
 require "roda"

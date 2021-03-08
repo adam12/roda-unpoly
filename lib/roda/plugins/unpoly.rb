@@ -47,10 +47,12 @@ class Roda
         extend Forwardable
 
         # @!method unpoly?
-        #   is an Unpoly request
+        #   is an Unpoly request?
         #   @return [Boolean]
-        def_delegators :up, :unpoly?
-        alias_method :unpoly?, :up?
+        # @!method up?
+        #   is an Unpoly request?
+        #   @return [Boolean]
+        def_delegators :up, :unpoly?, :up?
 
         # An instance of the +Inspector+.
         # @return [RodaInspector]
