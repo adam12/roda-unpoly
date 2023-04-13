@@ -1,5 +1,6 @@
 require "rake/testtask"
 require "rubygems/tasks"
+require "standard/rake"
 
 Rake::TestTask.new do |t|
   t.libs << "test"

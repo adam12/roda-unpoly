@@ -16,4 +16,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake", ">= 12.3.3"
   spec.add_development_dependency "rubygems-tasks", "~> 0.2"
   spec.add_development_dependency "rack-test", "~> 0.6"
+  spec.add_development_dependency "standard", "~> 1.26"
 end
