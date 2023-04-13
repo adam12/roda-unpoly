@@ -4,7 +4,7 @@ Gem::Specification.new do |spec|
   spec.authors = ["Adam Daniels"]
   spec.email = "adam@mediadrive.ca"
 
-  spec.summary = %q(Integrate Unpoly with Roda)
+  spec.summary = "Integrate Unpoly with Roda"
   spec.homepage = "https://github.com/adam12/roda-unpoly"
   spec.license = "MIT"
 

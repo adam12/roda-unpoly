@@ -62,7 +62,7 @@ class Roda
       end
 
       # @api private
-      def self.configure(app, _opts={})
+      def self.configure(app, _opts = {})
         app.use Rack::Unpoly::Middleware
       end
     end
