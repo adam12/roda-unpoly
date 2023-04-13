@@ -1,6 +1,8 @@
 ## master
 
 - Add standardrb (@adam12)
+- Switch to minitest test task (@adam12)
+
 ## 0.4.0 (2018-01-18)
 - Switch to rack-unpoly for all low-level Unpoly calls
 - Remove `r.unpoly` requirement in routing tree

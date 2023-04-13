@@ -1,12 +1,8 @@
-require "rake/testtask"
+require "minitest/test_task"
 require "rubygems/tasks"
 require "standard/rake"
 
-Rake::TestTask.new do |t|
-  t.libs << "test"
-  t.test_files = FileList["test/test*.rb"]
-  t.verbose = true
-end
+Minitest::TestTask.create
 
 Gem::Tasks.new
 
