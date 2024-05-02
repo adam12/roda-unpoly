@@ -2,3 +2,4 @@
 /pkg
 /html
 /.yardoc
+/gemfiles/*.lock
