@@ -15,6 +15,7 @@ jobs:
           - '3.2'
           - '3.3'
           - '3.4'
+          - '4.0'
         gemfile:
           - gemfiles/roda-2.rb
           - gemfiles/roda-3.rb
